@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            //JSON Array Object
+            var data = [
+                { id: 1, state: "TEL" },
+                { id: 2, state: "AP" },
+                { id: 3, state: "MH" },
+                { id: 4, state: "KER" },
+                { id: 5, state: "GJ" },
+            ];
+
+            var datalist = document.getElementById("lstdata");
+            for(var i=0;i<data.length;i++)
+            {
+                datalist.innerHTML += "<option value =" + data[i].id + ">" + data[i].id + data[i].state + "</option>";
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <input type="text" id="txtstates" list="lsstates" autocomplete="on" />
+
+    <datalist id="lsstates">
+        <option value="TEL">TEL</option>
+        <option value="TN">TN</option>
+        <option value="TM">TM</option>
+        <option value="AP">AP</option>
+        <option value="MH">MH</option>
+     </datalist>
+    <br />
+    <input type="text" id="txtdata" list="lstdata" />
+
+    <datalist id="lstdata">
+        
+    </datalist>
+</body>
+</html>
