@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+        .c1 {
+            border: double;
+            width: 100px;
+            height: 100px;
+            display: table-cell;
+        }
+
+        article {
+            width: 100%;
+            width: 400px;
+            display: table;
+        }
+
+        div {
+            border: double;
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        function init() {
+            var tags = document.getElementsByTagName("li");
+            for(var i=0;i<tags.length;i++)
+            {
+               
+                tags[i].addEventListener('dragstart', function (evt)
+                {
+                    evt.dataTransfer.setData("Text", evt.target.id);
+                }, false);
+
+            }
+
+            var droppable = document.getElementById("target");
+
+            droppable.addEventListener('drop', function (evt) {
+                var data = evt.dataTransfer.getData("Text");
+                
+                evt.target.appendChild(document.getElementById(data));
+            }, false);
+
+            droppable.addEventListener('dragover', function (evt) {
+                evt.preventDefault();
+            }, false);
+
+            for (var i = 0; i < droppable.length; i++) {
+                droppable[i].addEventListener('dragstart', function (evt) {
+                    evt.dataTransfer.setData("Text1", evt.target.id);
+                }, false);
+
+            }
+
+            var source = document.getElementsByTagName("target");
+            source.addEventListener('drop', function (evt) {
+                var data = evt.dataTransfer.getData("Text1");
+
+                evt.target.appendChild(document.getElementById(data));
+            }, false);
+
+            source.addEventListener('dragover', function (evt) {
+                evt.preventDefault();
+            }, false);
+
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+
+    <div id="source" class="c1">
+
+
+        <ol draggable="true">
+            <li draggable="true" id="1">Laptop</li>
+            <li draggable="true" id="2">Desktop</li>
+            <li draggable="true" id="3"> Router</li>
+            <li draggable="true" id="4">DVD</li>
+            <li draggable="true" id="5">DVDRW</li>
+        </ol>
+
+    </div>
+      <div id="target" class="c1">
+
+
+        </div>
+
+</body>
+</html>
